@@ -1,0 +1,20 @@
+# env
+.env
+.env.*.local
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# node
+node_modules/
+apps/web/dist/
+apps/web/.vite/
+
+# logs
+*.log
+
+# misc
+.DS_Store

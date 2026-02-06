@@ -1,0 +1,14 @@
+{
+  "name": "data-analyst-agent",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "pnpm -C apps/web dev",
+    "dev:api": "pnpm -C apps/web dev",
+    "dev:web": "pnpm -C apps/web dev",
+    "lint": "pnpm -C apps/web lint"
+  }
+}

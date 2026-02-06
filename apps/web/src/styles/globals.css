@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg: #f6f3ed;
+  --bg-2: #e7efe9;
+  --ink: #0b0e12;
+  --muted: #485261;
+  --card: rgba(255, 255, 255, 0.75);
+  --border: rgba(12, 18, 27, 0.08);
+  --accent: #0e8a7a;
+  --accent-2: #f08a4b;
+}
+
+[data-theme="dusk"] {
+  --bg: #0c121b;
+  --bg-2: #111c2c;
+  --ink: #f7f9fc;
+  --muted: #a4b0c5;
+  --card: rgba(16, 24, 38, 0.7);
+  --border: rgba(255, 255, 255, 0.12);
+  --accent: #17c3a5;
+  --accent-2: #f4a261;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", sans-serif;
+  background: radial-gradient(circle at top left, var(--bg-2), var(--bg));
+  color: var(--ink);
+}
+
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: fade-rise 0.6s ease-out both;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.glass {
+  background: var(--card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.accent-line {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
