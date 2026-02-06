@@ -4,42 +4,26 @@ services:
   api:
     build:
       context: ./apps/api
+      dockerfile: Dockerfile
     env_file:
-      - ./.env
+      - .env
     ports:
-      - "8000:8000"
+      - "22432:22432"
+    working_dir: /app
+    command: >
+      sh -c "pip install -r requirements.txt &&
+             uvicorn main:app --host 0.0.0.0 --port 22432"
     volumes:
-      - ./apps/api/src:/app/src
-    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+      - ./apps/api:/app
+      - ./data:/app/data
 
   web:
     build:
       context: ./apps/web
+      dockerfile: Dockerfile
     env_file:
-      - ./.env
+      - .env
     ports:
-      - "5173:5173"
-    volumes:
-      - ./apps/web:/app
-    command: ["pnpm", "dev", "--host", "0.0.0.0", "--port", "5173"]
+      - "80:5173"
     depends_on:
       - api
-
-  db:
-    image: postgres:16-alpine
-    environment:
-      POSTGRES_USER: daa
-      POSTGRES_PASSWORD: daa
-      POSTGRES_DB: daa
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-  redis:
-    image: redis:7-alpine
-    ports:
-      - "6379:6379"
-
-volumes:
-  postgres_data:

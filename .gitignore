@@ -16,5 +16,9 @@ apps/web/.vite/
 # logs
 *.log
 
+# docker
+Dockerfile
+dockerfile
+
 # misc
 .DS_Store
